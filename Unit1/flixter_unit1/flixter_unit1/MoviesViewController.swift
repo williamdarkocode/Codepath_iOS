@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -52,7 +53,9 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = TableView.dequeueReusableCell(withIdentifier: "MovieCell") as! MovieCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell") as! MovieCell
+        
+//        print(movies[indexPath.row])
         
         let curMovie = movies[indexPath.row]
         let curMovieTitle = curMovie["original_title"] as! String
@@ -65,6 +68,16 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         cell.TitleLabel.text = curMovieTitle
         cell.DescriptionLabel.text = curMovieDesc
+        
+        cell.TitleLabel.layer.cornerRadius = 5
+        cell.TitleLabel.layer.masksToBounds = true
+        cell.DescriptionLabel.layer.cornerRadius = 5
+        cell.DescriptionLabel.layer.masksToBounds = true
+    
+        let baseUrl = "https://image.tmdb.org/t/p/w300"
+        let backdropUrl = URL(string: baseUrl + curMovieBackdrop)
+        
+        cell.PosterView.af_setImage(withURL: backdropUrl!)
         
         return cell
     }
