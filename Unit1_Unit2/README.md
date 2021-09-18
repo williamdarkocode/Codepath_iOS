@@ -37,6 +37,7 @@ Describe any challenges encountered while building the app.
 
 ### App Walkthrough GIF
 
+![compressed_gif_lower](https://user-images.githubusercontent.com/29417661/132949124-5d1f67da-8435-4acd-b990-b588c0fa941f.gif)
 
 
 
